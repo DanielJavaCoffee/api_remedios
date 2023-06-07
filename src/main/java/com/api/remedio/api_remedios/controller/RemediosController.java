@@ -33,4 +33,10 @@ public class RemediosController {
 		var uri = uriBuilder.path("/remedios/{id}").buildAndExpand(remedio.getId()).toUri();
 		return ResponseEntity.created(uri).body(new DadosDetalhamentoRemedio(remedio));
 	}
+	
+	@GetMapping("listar")
+	public ResponseEntity<List<DadosDetalhamentoRemedio>> listar() {
+		var remedios = remedioRepository.findAll().stream().map(DadosDetalhamentoRemedio::new).toList();
+		return ResponseEntity.ok(remedios);
+	}
 }
