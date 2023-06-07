@@ -17,7 +17,6 @@ import jakarta.persistence.Table;
 @Entity
 public class Remedio implements Serializable {
 
-
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -28,19 +27,21 @@ public class Remedio implements Serializable {
 	private boolean ativo;
 	private double preco;
 	private int quantidade;
+	private String lote;
 	private Laboratorio laboratorio;
 	private Via via;
 	
 	public Remedio() {
 	}
 
-	public Remedio(String nome, LocalDate dataDeValidade, double preco, int quantidade, Laboratorio laboratorio, Via via) {
+	public Remedio(String nome, LocalDate dataDeValidade, double preco, int quantidade, String lote, Laboratorio laboratorio, Via via) {
 		super();
 		this.nome = nome;
 		this.dataDeValidade = dataDeValidade;
 		this.ativo = true;
 		this.preco = preco;
 		this.quantidade = quantidade;
+		this.lote = lote;
 		this.laboratorio = laboratorio;
 		this.via = via;
 	}
@@ -100,6 +101,14 @@ public class Remedio implements Serializable {
 
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
+	}
+
+	public String getLote() {
+		return lote;
+	}
+
+	public void setLote(String lote) {
+		this.lote = lote;
 	}
 
 	public Laboratorio getLaboratorio() {
