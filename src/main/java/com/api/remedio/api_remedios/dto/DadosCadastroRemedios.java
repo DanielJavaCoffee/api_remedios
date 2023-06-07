@@ -8,30 +8,29 @@ import com.api.remedio.api_remedios.enuns.Via;
 import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;
-
-//import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public record DadosCadastroRemedios(
 		
 		@NotBlank
 		String nome,
-		
-		@Future
-		LocalDate dataDeValidade,
-		
-		@NotBlank
-		double preco,
-		
-		@NotBlank
-		int quantidade,
+
+		@Enumerated
+		Via via,
 		
 		@NotBlank
 		String lote,
 		
+		@NotNull
+		int quantidade,
+		
+		@Future
+		LocalDate validade,
+		
 		@Enumerated
 		Laboratorio laboratorio,
 		
-		@Enumerated
-		Via via
+		@NotNull
+		double preco
 		) {
 }

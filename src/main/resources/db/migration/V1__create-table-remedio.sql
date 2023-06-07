@@ -1,11 +1,12 @@
-create table remedio(
-id bigint not null auto_increment,
-nome varchar(100) not null,
-via varchar (100) not null,
-lote varchar (100) not null,
-quantidade int(20) not null,
-preco double(1000) not null,
-dataDeValidade varchar (100) not null,
-laboratorio varchar (100) not null,
-
-primary key (id));
+CREATE TABLE remedio (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    via VARCHAR(100) NOT NULL,
+    lote VARCHAR(100) NOT NULL,
+    quantidade INT(20) NOT NULL,
+    preco DOUBLE NOT NULL,
+    validade VARCHAR(100) NOT NULL,
+    ativo BOOLEAN NOT NULL,
+    laboratorio VARCHAR(100) NOT NULL,
+    PRIMARY KEY (id)
+);

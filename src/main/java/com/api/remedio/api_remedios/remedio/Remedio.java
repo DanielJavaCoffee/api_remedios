@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import com.api.remedio.api_remedios.dto.DadosCadastroRemedios;
 import com.api.remedio.api_remedios.enuns.Laboratorio;
 import com.api.remedio.api_remedios.enuns.Via;
 
@@ -18,32 +19,44 @@ import jakarta.persistence.Table;
 public class Remedio implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
-	private LocalDate dataDeValidade;
+	private LocalDate validade;
 	private boolean ativo;
 	private double preco;
 	private int quantidade;
 	private String lote;
 	private Laboratorio laboratorio;
 	private Via via;
-	
+
 	public Remedio() {
 	}
 
-	public Remedio(String nome, LocalDate dataDeValidade, double preco, int quantidade, String lote, Laboratorio laboratorio, Via via) {
+	public Remedio(String nome, Via via, String lote, int quantidade, LocalDate validade, Laboratorio laboratorio,
+			double preco) {
 		super();
 		this.nome = nome;
-		this.dataDeValidade = dataDeValidade;
+		this.validade = validade;
 		this.ativo = true;
 		this.preco = preco;
 		this.quantidade = quantidade;
 		this.lote = lote;
 		this.laboratorio = laboratorio;
 		this.via = via;
+	}
+
+	public Remedio(DadosCadastroRemedios dados) {
+		this.nome = dados.nome();
+		this.validade = dados.validade();
+		this.ativo = true;
+		this.preco = dados.preco();
+		this.quantidade = dados.quantidade();
+		this.lote = dados.lote();
+		this.laboratorio = dados.laboratorio();
+		this.via = dados.via();
 	}
 
 	@Override
@@ -71,12 +84,12 @@ public class Remedio implements Serializable {
 		this.nome = nome;
 	}
 
-	public LocalDate getDataDeValidade() {
-		return dataDeValidade;
+	public LocalDate getValidade() {
+		return validade;
 	}
 
-	public void setDataDeValidade(LocalDate dataDeValidade) {
-		this.dataDeValidade = dataDeValidade;
+	public void setValidade(LocalDate validade) {
+		this.validade = validade;
 	}
 
 	public boolean isAtivo() {
@@ -129,5 +142,5 @@ public class Remedio implements Serializable {
 
 	public Long getId() {
 		return id;
-	}	
+	}
 }
